@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+        "bcomponents": ["bcomponents"],
+        "config": ["config"],
+        "components": ["components"],
+        "utils": ["utils"],
+        "services":["services"]
+    }
+  }
+}

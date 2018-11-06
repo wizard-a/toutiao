@@ -1,0 +1,22 @@
+{
+  "name": "koa2-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ip": "^1.1.5",
+    "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.0",
+    "log4js": "^3.0.6",
+    "mongodb": "^3.1.8",
+    "nodemon": "^1.18.6",
+    "require-directory": "^2.1.1"
+  }
+}

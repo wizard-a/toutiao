@@ -1,0 +1,10 @@
+
+node_modules/
+
+logs/
+
+config/innerTest.js
+
+.idea
+
+package-lock.json

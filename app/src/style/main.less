@@ -1,0 +1,57 @@
+@import './variable.less';
+
+
+:global{
+  .login-bg, .reg-bg{
+    background: @bg-color;
+    height: 100%;
+  }
+
+  .form-item{
+    /**  修改 ant 值 begin */
+    .am-list-item {
+      background-color: transparent;
+    }
+    .am-button {
+      height: 45px;
+      border-radius: 45px;
+      line-height: 45px;
+    }
+    /**  修改 ant 值 end */
+
+    height: 45px;
+    line-height: 45px;
+    width: 315px;
+    margin-top: 25px;
+    box-sizing: border-box;
+
+    &-input {
+      border: 1px solid #9d9d9d;
+      border-radius: 45px;
+    }
+
+    &-button{
+      border-radius: 45px;
+    }
+
+    &-a{
+      color: #70889e;
+      margin-top: 50px;
+    }
+    // &-button-disable {
+    //   background: #fbaaa9;
+    // }
+
+    &-line {
+      width: 1px;
+      display: block;
+      background: #979797;
+      height: 16px;
+      margin-right: 8px;
+    }
+    &-phone{
+      width: 205px;
+    }
+  }
+}
+
