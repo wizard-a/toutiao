@@ -1,11 +1,11 @@
 ### 仿今日头条
 
-#### app
+#### [app](https://github.com/jiechud/toutiao/tree/master/app)
 
 
 #### web
 
 
-#### server
+#### [server](https://github.com/jiechud/toutiao/tree/master/server)
 
 
