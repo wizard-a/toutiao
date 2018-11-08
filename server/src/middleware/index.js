@@ -5,13 +5,15 @@ const miLog = require('./mi-log');
 const miResultFormat = require('./mi-result-format');
 const miSession = require('./mi-session');
 const bodyParser = require('koa-bodyparser');
+const multer = require('koa-multer');
+const body = require('koa-body');
 
 module.exports = function(app) {
     app.use(miHttpError());
     // 处理返回结果
     app.use(miResultFormat());
     // 处理登录权限
-    app.use(miSession());
+    // app.use(miSession());
     // 设置log
     app.use(miLog({
         env: app.env,
@@ -21,9 +23,11 @@ module.exports = function(app) {
         serverIp: ip.address()
     }));
     // 设置body parser
-    app.use(bodyParser({
-        enableTypes:['json', 'form', 'text']
-    }));
+    // app.use(bodyParser({
+    //     // enableTypes:['json', 'form', 'text']
+    // }));
+    // app.use(multer());
+    app.use(body({multipart: true}));
     // 设置 session
     app.keys = ['server-koa2-cookies-singed'];//产生的 signedCookie 防篡改
     const CONFIG = {
