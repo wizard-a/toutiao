@@ -4,8 +4,8 @@ const miHttpError = require('./mi-http-error');
 const miLog = require('./mi-log');
 const miResultFormat = require('./mi-result-format');
 const miSession = require('./mi-session');
-const bodyParser = require('koa-bodyparser');
-const multer = require('koa-multer');
+// const bodyParser = require('koa-bodyparser');
+// const multer = require('koa-multer');
 const body = require('koa-body');
 
 module.exports = function(app) {

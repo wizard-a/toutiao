@@ -8,3 +8,13 @@ config/innerTest.js
 .idea
 
 package-lock.json
+
+test.js
+
+.vscode
+
+yarn-error.log
+
+public/upload/
+
+todo.md

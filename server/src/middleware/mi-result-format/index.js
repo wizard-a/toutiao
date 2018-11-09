@@ -1,5 +1,6 @@
 const httpCode = {
     '404': '没有此路由',
+    '405': 'Method not allowed Explained',
     '500': '服务器内部错误',
 }
 
