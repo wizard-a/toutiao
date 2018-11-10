@@ -1,5 +1,9 @@
 const path = require('path');
 
+const svgDirs = [
+  path.resolve(__dirname, 'src/assets'),  // 2. 自己私人的 svg 存放目录
+];
+
 // ref: https://umijs.org/config/
 export default {
   plugins: [
@@ -22,6 +26,8 @@ export default {
       // hardSource: /** isMac */ process.platform === 'darwin',
     }],
   ],
+  chainWebpack(config, { webpack }) {
+  },
   alias: {
     bcomponents: path.resolve(__dirname, './src/bcomponents'),
     config: path.resolve(__dirname, './src/config'),
