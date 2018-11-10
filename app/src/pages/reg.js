@@ -1,26 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'dva';
 import {Flex, InputItem, Button, NavBar, Icon, Toast } from 'antd-mobile';
 import Link from 'umi/link';
 import { createForm } from 'rc-form';
 import formValid from 'utils/formValid';
 import styles from './reg.less';
+console.log('connect', connect);
 
 @createForm()
+@connect(({ workflowIndex }) => ({ ...workflowIndex }))
+// @connect(({user}) => ({
+//   regLoading: user.regLoading,
+// }))
 class Reg extends Component {
 
 
   reg = () => {
-    this.props.form.validateFields((error, value) => {
+    const {form, dispatch} = this.props;
+    form.validateFields((error, value) => {
       if (error) {
         return;
       }
       value.account = value.account.replace(/ /g, '');
+      dispatch({type: 'user/reg', payload: value});
       console.log('value', value);
     });
   }
 
   render() {
-    const { getFieldProps, getFieldError } = this.props.form;
+    const {form: {getFieldProps, getFieldError}, regLoading} = this.props;
     const errFormObj = getFieldError(['account', 'password']) || {};
     const isDisable = Object.keys(errFormObj)
                       .some(s => errFormObj[s] !== undefined)
@@ -83,6 +91,7 @@ class Reg extends Component {
                 type='warning'
                 disabled={isDisable}
                 onClick={this.reg}
+                loading={regLoading}
               >注册</Button>
             </div>
             <Link to="/login" className='form-item-a'>免密码登录</Link>

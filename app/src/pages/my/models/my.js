@@ -1,5 +1,3 @@
-import { queryMessage, setIsRead } from 'services/message';
-
 
 export default {
   namespace: 'my',

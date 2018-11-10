@@ -1,8 +1,6 @@
 const path = require('path');
 
-const svgDirs = [
-  path.resolve(__dirname, 'src/assets'),  // 2. 自己私人的 svg 存放目录
-];
+const server = 'http://localhost:3000';
 
 // ref: https://umijs.org/config/
 export default {
@@ -10,7 +8,7 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: false,
-      dva: false,
+      dva: true,
       dynamicImport: false,
       title: 'app',
       dll: false,
@@ -36,5 +34,12 @@ export default {
     services: path.resolve(__dirname, './src/services'),
     assets: path.resolve(__dirname, './src/assets'),
     src: path.resolve(__dirname, './src'),
+  },
+  proxy: {
+    "/api": {
+      "target": server,
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "/api" }
+    },
   },
 }
