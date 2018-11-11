@@ -1,4 +1,5 @@
 import { reg } from 'services/user';
+import { Toast } from 'antd-mobile';
 import router from 'umi/router';
 
 export default {
@@ -15,7 +16,10 @@ export default {
       yield put({type: 'setRegLoading', payload: true});
       const res = yield call(reg, payload);
       if (res) {
-        router.push('login');
+        Toast.info('注册成功，请登录!', 2);
+        setTimeout(() => {
+          router.push('login');
+        }, 2000)
       }
       yield put({type: 'setRegLoading', payload: false});
     },
