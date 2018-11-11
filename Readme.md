@@ -9,7 +9,8 @@
 
 ##### 演示地址
 1. 浏览器访问[头条](http://39.105.188.65)或者输入地址 http://39.105.188.65
-2. 
+2. 请扫描二维码 
+    ![头条](https://github.com/jiechud/toutiao/blob/master/app/resource/%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80.png)
 
 
 #### web
