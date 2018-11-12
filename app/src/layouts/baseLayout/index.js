@@ -43,6 +43,7 @@ class BaseLayout extends React.Component {
   }
 
   render() {
+    console.log('base-layout-render');
     return (
       <div className={styles.baseLayout}>
        <TabBar
@@ -52,32 +53,35 @@ class BaseLayout extends React.Component {
           tabBarPosition='bottom'
         >
           {
-            TabBarData.map(t => (
-              <TabBar.Item
-                title={t.name}
-                key={t.id}
-                icon={<div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: `url(${iconObj[t.icon]}) center center /  21px 21px no-repeat` }}
-                />
-                }
-                selectedIcon={<div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: `url(${iconObj[`${t.icon}Fill`]}) center center /  21px 21px no-repeat` }}
-                />
-                }
-                // badge={1}
-                onPress={() => {
-                  router.push(t.url);
-                }}
-                selected={this.isTabBarSelect(t.url)}
-                data-seed="logId"
-              >
-                {this.props.children}
-              </TabBar.Item>
-            ))
+            TabBarData.map(t => {
+              const isSelect = this.isTabBarSelect(t.url);
+              return  (<TabBar.Item
+                  title={t.name}
+                  key={t.id}
+                  icon={<div style={{
+                    width: '22px',
+                    height: '22px',
+                    background: `url(${iconObj[t.icon]}) center center /  21px 21px no-repeat` }}
+                  />
+                  }
+                  selectedIcon={<div style={{
+                    width: '22px',
+                    height: '22px',
+                    background: `url(${iconObj[`${t.icon}Fill`]}) center center /  21px 21px no-repeat` }}
+                  />
+                  }
+                  // badge={1}
+                  onPress={() => {
+                    router.push(t.url);
+                  }}
+                  selected={isSelect}
+                  data-seed="logId"
+                >
+
+                {isSelect && this.props.children}
+                </TabBar.Item>
+              )
+            })
           }
         </TabBar>
       </div>
