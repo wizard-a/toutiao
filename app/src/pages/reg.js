@@ -8,10 +8,9 @@ import styles from './reg.less';
 console.log('connect', connect);
 
 @createForm()
-@connect(({ workflowIndex }) => ({ ...workflowIndex }))
-// @connect(({user}) => ({
-//   regLoading: user.regLoading,
-// }))
+@connect(({user}) => ({
+  regLoading: user.regLoading,
+}))
 class Reg extends Component {
 
 

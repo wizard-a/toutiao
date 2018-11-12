@@ -39,6 +39,12 @@ userCTL.login = async function(ctx) {
 userCTL.reg = async function(ctx){
     const { account, password } = ctx.request.body;
     const encryptPassword = encrypt(password);
+    const isExists = await UserService.getByAccount(account);
+    if (isExists) {
+        ctx.code = 101002;
+        ctx.body = errorCode[101002];
+        return;
+    }
     const user = new User(account, encryptPassword)
     const res = await UserService.save(user);
     ctx.body = res;
