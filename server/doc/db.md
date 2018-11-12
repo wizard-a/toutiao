@@ -32,14 +32,14 @@
 |名称     |类型    |描述     |
 | ------ | ------ | ------ |
 | id     | uuid   | 新闻id  |
-| user | Object |  创建人|
 | title | String| 标题   |
 | content| String| 内容  |
-| coverImg | String | 封面图 |
+| coverImg | Array | 封面图 |
 |commentCount| int | 评论数|
+| createUser | Object |  创建人|
 | createTime  |  Date | 创建时间  |
 | updateTime   | Date| 更新时间  |
-| status | int | 状态  1 可用， 0 禁用 | 
+| status | int | 状态  2 草稿  1 可用， 0 禁用 | 
 
 
 ##### t-micro-toutiao

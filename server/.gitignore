@@ -15,7 +15,7 @@ test.js
 
 yarn-error.log
 
-!/public/upload/photo.jpg
-/public/upload
+!/public/api/photo/photo.jpg
+/public/
 
 todo.md
