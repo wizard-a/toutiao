@@ -5,7 +5,6 @@ import Link from 'umi/link';
 import { createForm } from 'rc-form';
 import formValid from 'utils/formValid';
 import styles from './reg.less';
-console.log('connect', connect);
 
 @createForm()
 @connect(({user}) => ({
@@ -22,7 +21,6 @@ class Reg extends Component {
       }
       value.account = value.account.replace(/ /g, '');
       dispatch({type: 'user/reg', payload: value});
-      console.log('value', value);
     });
   }
 

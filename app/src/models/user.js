@@ -1,5 +1,6 @@
-import { reg } from 'services/user';
+import { reg, login, logout } from 'services/user';
 import { Toast } from 'antd-mobile';
+import localStorage from 'utils/localStorage';
 import router from 'umi/router';
 
 export default {
@@ -8,6 +9,7 @@ export default {
   state: {
     regLoading: false,
     loginLoading: false,
+    user: null,
   },
 
 
@@ -23,6 +25,27 @@ export default {
       }
       yield put({type: 'setRegLoading', payload: false});
     },
+    *login({ payload }, { call, put }) {
+      yield put({type: 'setLoginLoading', payload: true});
+      const res = yield call(login, payload);
+      if (res) {
+        // 设置 localStorage
+        localStorage.add('user', res);
+        yield put({type: 'setUser', payload: res});
+        router.push('/my');
+      }
+      yield put({type: 'setLoginLoading', payload: false});
+    },
+    *logout({ payload }, { call, put }) {
+      const res = yield call(logout);
+      if (res) {
+        localStorage.remove('user');
+        yield put({
+          type: 'setUser',
+          payload: null
+        })
+      }
+    },
   },
 
   reducers: {
@@ -32,11 +55,17 @@ export default {
         regLoading: payload,
       }
     },
-    saveUnReadCount(state, { payload }) {
+    setLoginLoading(state, { payload }) {
       return {
         ...state,
-        unReadCount: payload,
-      };
+        loginLoading: payload,
+      }
+    },
+    setUser(state, { payload }) {
+      return {
+        ...state,
+        user: payload,
+      }
     },
   },
 };

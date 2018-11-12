@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
 import { WhiteSpace, List } from 'antd-mobile';
-import { TIcon } from 'components';
-import { MenuBar } from './_components';
+import { connect } from 'dva';
+import { Header, MenuBar } from './_components';
 import Link from 'umi/link';
 import styles from './index.less';
 
 const Item = List.Item;
 
+@connect(({user}) => ({
+  user: user.user,
+}))
 class User extends Component {
+
+  logout = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'user/logout'
+    });
+  }
+
   render() {
+    const {user} = this.props;
+    console.log('user', this.props);
     return (
       <div className={styles.my}>
         <div className={styles.myHeader}>
-          <div className={styles.myHeaderLogin}>
-            <Link to='/login'>登录</Link>
-          </div>
+          {
+            user ? <Header user={user} /> : <div className={styles.myHeaderLogin}><Link to='/login'>登录</Link></div>
+          }
         </div>
         <WhiteSpace style={{background: '#f2f6f9'}} size='sm' />
         <MenuBar />
@@ -32,7 +45,7 @@ class User extends Component {
         <WhiteSpace style={{background: '#f1f5f8'}} size='sm' />
         <List>
           <Item arrow='horizontal'>用户反馈</Item>
-          <Item arrow='horizontal'>退出系统</Item>
+          <Item arrow='horizontal' onClick={this.logout}>退出系统</Item>
         </List>
       </div>
     )
