@@ -1,3 +1,4 @@
+const path = require('path')
 const ip = require("ip");
 const session = require('koa-session');
 const miHttpError = require('./mi-http-error');
@@ -23,10 +24,6 @@ module.exports = function(app) {
         serverIp: ip.address()
     }));
     // 设置body parser
-    // app.use(bodyParser({
-    //     // enableTypes:['json', 'form', 'text']
-    // }));
-    // app.use(multer());
     app.use(body({multipart: true}));
     // 设置 session
     app.keys = ['server-koa2-cookies-singed'];//产生的 signedCookie 防篡改

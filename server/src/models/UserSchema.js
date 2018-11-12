@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     account: { type: String, unique:true, dropDups: true },
     password: { type: String },
-    photo: { type: String },
+    photo: { type: String, default: 'photo.jpg' },
     userName: { type: String },
     description: { type: String },
     sex: { type: Number},

@@ -14,7 +14,7 @@ async function upload(fPath, fileName) {
     const reader = fs.createReadStream(fPath);
     const fileSuffix = util.getFileSuffix(fileName);
     const newFileName = `${uuidv4()}.${fileSuffix}`;
-    const filePath = path.join(__dirname, '../../public/upload') + `/${newFileName}`;
+    const filePath = path.join(__dirname, '../../public/api/photo') + `/${newFileName}`;
     // 创建可写流
     const upStream = fs.createWriteStream(filePath);
     // 可读流通过管道写入可写流
