@@ -46,9 +46,9 @@ const adminMenu = [
       },
       {
         id: 42,
-        name: '消息中心',
-        enName: 'Message',
-        url: '/system/message',
+        name: '渠道管理',
+        enName: 'Channel',
+        url: '/system/channel',
       }
     ]
   },

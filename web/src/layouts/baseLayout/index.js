@@ -6,6 +6,7 @@ import MenuComponent from './menu';
 import HeaderComponent from './header';
 import router from 'umi/router';
 import { checkLogin } from '../init';
+import { Bread } from 'components';
 const { Header, Content, Footer, Sider } = Layout;
 
 @connect(({auth, global}) => {
@@ -64,10 +65,7 @@ class BaseLayout extends React.Component {
             <HeaderComponent currLocale={currLocale} />
           </Header>
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
+            <Bread style={{ margin: '16px 0 12px 0' }} />
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
               {this.props.children}
             </div>

@@ -8,7 +8,7 @@ export default {
       antd: true,
       dva: true,
       // dynamicImport: true,
-      title: 'umi-framework',
+      title: '头条-后台管理系统',
       pwa: false,
       routes: {
         exclude: [
