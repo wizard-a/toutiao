@@ -14,7 +14,11 @@
 ![头条](https://github.com/jiechud/toutiao/blob/master/app/resource/ip.png)
 
 
-#### web
+#### [web](https://github.com/jiechud/toutiao/tree/master/web)
+
+##### 演示地址
+1. 浏览器访问[web](http://39.105.188.65:8080)或者输入地址 http://39.105.188.65:8080
+
 
 
 #### [server](https://github.com/jiechud/toutiao/tree/master/server)
