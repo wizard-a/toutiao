@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import styles from './index.less';
 class Home extends Component {
 
   componentDidMount() {

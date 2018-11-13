@@ -1,9 +1,21 @@
 
 
-// 水平垂直居中
+/* 水平垂直居中 */
 .center () {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+/* 多行文本显示 ... */
+.multEllipsis(@line: 2) {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
 }

@@ -24,3 +24,7 @@
 #### [server](https://github.com/jiechud/toutiao/tree/master/server)
 
 
+
+#### 交流
+
+我建了一个QQ群，大家加进来，可以一起交流。群号 787846148
