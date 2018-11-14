@@ -1,12 +1,12 @@
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import { connect } from 'dva';
 import styles from './baseLayout.less';
 import MenuComponent from './menu';
 import HeaderComponent from './header';
 import router from 'umi/router';
 import { checkLogin } from '../init';
-import { Bread } from 'components';
+import { UBread } from 'components';
 const { Header, Content, Footer, Sider } = Layout;
 
 @connect(({auth, global}) => {
@@ -64,14 +64,14 @@ class BaseLayout extends React.Component {
           <Header style={{ background: '#fff', padding: 0 }}>
             <HeaderComponent currLocale={currLocale} />
           </Header>
-          <Content style={{ margin: '0 16px' }}>
-            <Bread style={{ margin: '16px 0 12px 0' }} />
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+          <Content style={{ margin: '0 16px', display: 'flex', flexDirection: 'column' }}>
+            <UBread style={{ margin: '16px 0 12px 0' }} />
+            <div style={{ padding: 24, background: '#fff', minHeight: 360, overflow: 'auto', flex: 1, height: '0px' }}>
               {this.props.children}
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
+          <Footer style={{ textAlign: 'center', padding: '10px 50px' }}>
+            tou tiao ©2018 Created by Ant UED
           </Footer>
         </Layout>
       </Layout>

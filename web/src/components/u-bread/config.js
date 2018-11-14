@@ -19,6 +19,12 @@ export default [
     route: '/news/list',
   },
   {
+    id: 211,
+    pid: 21,
+    name: '添加新闻',
+    route: '/news/list/create',
+  },
+  {
     id: 22,
     pid: 2,
     name: '评论管理',
