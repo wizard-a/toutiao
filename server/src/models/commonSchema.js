@@ -28,7 +28,10 @@ function setSchema(schema) {
           return this.findOne({uid: uid})
             .sort('createTime')
             .exec();
-        }
+        },
+        findByPage: function (searchName, pageIndex, pageNum, sortName, sortWay) {
+            return this.find({}).exec();
+        },
     };
 }
 

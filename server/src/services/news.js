@@ -12,4 +12,5 @@ async function save(news) {
 
 module.exports = {
     save,
+    NewsModel,
 }

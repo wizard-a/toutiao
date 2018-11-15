@@ -1,5 +1,10 @@
 const path = require('path');
-const server = 'http://localhost:3000';
+let server = 'http://localhost:3000';
+
+if (process.env.SERVER === 'server') {
+  server = 'http://39.105.188.65';
+}
+
 // ref: https://umijs.org/config/
 export default {
   plugins: [

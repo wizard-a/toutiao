@@ -21,7 +21,6 @@ const bfEditorRequire = (message) => {
   const msg = message;
   return {
     validator: (rule, value, callback) => {
-      console.log('sssdfs', rule, value, callback);
       if (value && value.trim() !== '<p></p>') {
         callback();
       } else {

@@ -12,7 +12,7 @@ class UBraftEditor extends Component {
 
   handleEditorChange = (editorState) => {
     const {onChange} = this.props;
-    // console.log('ssss-handleEditorChange');
+    console.log('ssss-handleEditorChange');
     this.setState({ editorState });
     // 处理防抖
     if (time !== null) {
@@ -30,6 +30,7 @@ class UBraftEditor extends Component {
     return (
       <BraftEditor
         value={editorState}
+        triggerChangeOnMount={false}
         onChange={this.handleEditorChange}
       />
     )

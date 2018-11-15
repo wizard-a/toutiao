@@ -70,7 +70,7 @@ class Create extends Component {
             label='内容'
           >
               {getFieldDecorator('content', {
-                validateTrigger: 'onBlur',
+                // validateTrigger: 'onBlur',
                 rules: [
                   formValid.require('请输入内容'),
                 ],
