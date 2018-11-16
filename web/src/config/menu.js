@@ -14,11 +14,13 @@ const adminMenu = [
     url: '/news',
     children: [{
       id: 21,
+      pid: 2,
       name: '内容管理',
       enName: 'Content Manager',
       url: '/news/list',
     }, {
       id: 22,
+      pid: 2,
       name: '评论管理',
       enName: 'Comment Manager',
       url: '/news/comment',
@@ -40,12 +42,14 @@ const adminMenu = [
     children: [
       {
         id: 41,
+        pid: 4,
         name: '用户管理',
         enName: 'User',
         url: '/system/user',
       },
       {
         id: 42,
+        pid: 4,
         name: '渠道管理',
         enName: 'Channel',
         url: '/system/channel',
