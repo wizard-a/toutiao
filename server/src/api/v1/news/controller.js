@@ -54,3 +54,15 @@ newsCtl.getById = async function(ctx) {
     const res = await newsService.findById(id);
     ctx.body = res;
 }
+
+/**
+ * 根据id删除新闻
+ */
+newsCtl.del = async function(ctx) {
+    const { id = '' } = ctx.params;
+    const res = await newsService.del(id);
+    if (!res) {
+       ctx.code = '100001'
+    }
+    ctx.body = res || errorCode['100001'];
+}

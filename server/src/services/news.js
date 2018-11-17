@@ -28,6 +28,14 @@ async function edit(id, editObj) {
 }
 
 /**
+ * 根据id删除新闻信息
+ * @param {*} id 
+ */
+async function del(id) {
+    return NewsModel.findByIdAndRemove(id);
+}
+
+/**
  * 分页新闻列表
  * @param {*} search 
  * @param {*} pageIndex 
@@ -51,6 +59,7 @@ module.exports = {
     save,
     list,
     edit,
+    del,
     findById,
     NewsModel,
 }

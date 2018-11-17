@@ -5,4 +5,6 @@ module.exports = function(router){
     router.post('/news', newsCtl.add);
     router.post('/news/upload', newsCtl.upload);
     router.put('/news/:id', newsCtl.edit);
+    router.del('/news/:id', newsCtl.del);
+
 };
