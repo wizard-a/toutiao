@@ -29,8 +29,18 @@ function setSchema(schema) {
             .sort('createTime')
             .exec();
         },
-        findByPage: function (searchName, pageIndex, pageNum, sortName, sortWay) {
-            return this.find({}).exec();
+        findByPage: function (search, pageIndex = 1, pageNum = 10, orderName = 'createTime', orderBy = 'desc', fields = '') {
+            const skipIndex = (pageIndex - 1) * pageNum;
+            const sortObj = {};
+            sortObj[orderName] = orderBy;
+            pageNum = parseInt(pageNum);
+            fields = `${fields} createTime updateTime`;
+            return this
+                .find({...search, status: {$ne: 0}}, fields)
+                .sort(sortObj)
+                .limit(pageNum)
+                .skip(skipIndex)
+                .exec();
         },
     };
 }

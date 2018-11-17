@@ -1,6 +1,8 @@
 const newsCtl = require('./controller')
 module.exports = function(router){
-    router.post('/news/add', newsCtl.add);
+    router.get('/news', newsCtl.list);
+    router.get('/news/:id', newsCtl.getById);
+    router.post('/news', newsCtl.add);
     router.post('/news/upload', newsCtl.upload);
-    router.get('/news/list', newsCtl.list);
+    router.put('/news/:id', newsCtl.edit);
 };

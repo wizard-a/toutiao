@@ -1,14 +1,13 @@
-const newsCTL = module.exports = {};
+const newsCtl = module.exports = {};
 const errorCode = require('../../../config/errorCode');
 const encrypt = require('../../../utils/encrypt');
 const newsService = require('../../../services/news');
-const News = require('./news');
 const Upload = require('../../../utils/upload');
 
 /**
  * 添加新闻
  */
-newsCTL.add = async function(ctx) {
+newsCtl.add = async function(ctx) {
     const news = ctx.request.body;
     news.createUser = ctx.session.user;
     const res = await newsService.save(news);
@@ -19,7 +18,7 @@ newsCTL.add = async function(ctx) {
 /**
  * 上传封面
  */
-newsCTL.upload = async function(ctx) {
+newsCtl.upload = async function(ctx) {
     const file = ctx.request.files.file; // 获取上传文件
     const fileName = await Upload(file.path, file.name, 'news');
     ctx.body = {
@@ -30,9 +29,28 @@ newsCTL.upload = async function(ctx) {
 /**
  * 分页获取新闻列表
  */
-newsCTL.list = async function(ctx) {
-    console.log(newsService.NewsModel.schema.statics);
-    const res = await newsService.NewsModel.schema.statics.findByPage();
-    // await 
+newsCtl.list = async function(ctx) {
+    const {search = '', pageIndex= 1, pageNum = 10, orderName, orderBy } = ctx.query;
+    const res = await newsService.list(search, pageIndex, pageNum, orderName, orderBy);
+    ctx.body = res;
+}
+
+/**
+ * 编辑新闻
+ */
+newsCtl.edit = async function(ctx) {
+    const {id } = ctx.params;
+    const body = ctx.request.body;
+    body.updateTime = Date.now();
+    const res = await newsService.edit(id, body);
+    ctx.body = res;
+}
+
+/**
+ * 根据id获取新闻
+ */
+newsCtl.getById = async function(ctx) {
+    const { id = '' } = ctx.params;
+    const res = await newsService.findById(id);
     ctx.body = res;
 }
