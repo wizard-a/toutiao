@@ -6,7 +6,7 @@
 2. cd web && yarn || npm install
 3. `yarn start` 本地启动，访问的代理服务器地址是`http://localhost:3000`， 需要本地启动server项目
 
-   `yarn server` 本地启动，访问的代理服务器地址是`http://39.105.188.65:8080`，不需要本地启动server项目
+   `yarn server` 本地启动，访问的代理服务器地址是`http://39.105.188.65:8080`,不需要本地启动server项目
 4. open browser
 
 

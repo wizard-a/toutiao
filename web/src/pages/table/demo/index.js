@@ -77,9 +77,12 @@ class index extends Component {
         ) : text;
       },
     }, {
-      title: 'Age',
+      title: <Ppp content={'age'} title="Title">
+        Age
+      </Ppp>,
       dataIndex: 'age',
       key: 'age',
+      // sorter: true,
     }, {
       title: 'Address',
       dataIndex: 'address',

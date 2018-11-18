@@ -8,7 +8,8 @@ class MenuComponent extends React.Component {
 
   state = {
     menuOpenKeys: [],
-    menuSelectKeys: []
+    menuSelectKeys: [],
+    isShow: false,
   }
 
   link = (url) => {
@@ -19,6 +20,7 @@ class MenuComponent extends React.Component {
     setTimeout(() => {
       const keys = this.getMenuKes();
       this.setState({
+        isShow: true,
         menuOpenKeys: keys[0],
         menuSelectKeys: keys[1],
       });
@@ -101,19 +103,23 @@ class MenuComponent extends React.Component {
 
   render() {
     const { menu} = this.props;
-    const { menuOpenKeys, menuSelectKeys} = this.state;
+    const { menuOpenKeys, menuSelectKeys, isShow} = this.state;
     return (
-      <Menu theme='dark'
-        openKeys={menuOpenKeys}
-        selectedKeys={menuSelectKeys}
-        onOpenChange={this.onOpenChange}
-        onClick={this.onClick}
-        mode='inline'
-      >
+      <React.Fragment>
         {
-          this.renderMenu(menu)
+          isShow && (<Menu theme='dark'
+            openKeys={menuOpenKeys}
+            selectedKeys={menuSelectKeys}
+            onOpenChange={this.onOpenChange}
+            onClick={this.onClick}
+            mode='inline'
+          >
+            {
+              this.renderMenu(menu)
+            }
+          </Menu>)
         }
-      </Menu>
+      </React.Fragment>
     );
   }
 }
