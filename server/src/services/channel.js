@@ -54,14 +54,18 @@ async function del(id) {
  */
 async function list(search, pageIndex, pageNum, orderName, orderBy) {
     const filter = {
-        $or: [  // 多字段同时匹配
+        $or: [  // 多字段同时匹配c
             {name: {$regex: search}},
             // {content: {$regex: search, $options: '$i'}}, //  $options: '$i' 忽略大小写
         ]
     }
-
     const fields = 'name createUser createTime';
-    return ChannelModel.findByPage(filter, pageIndex, pageNum, orderName, orderBy, fields);
+    const count = await ChannelModel.findCount(filter);
+    const rows = await ChannelModel.findByPage(filter, pageIndex, pageNum, orderName, orderBy, fields);
+    return {
+        rows,
+        count,
+    }
 }
 
 module.exports = {

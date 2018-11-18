@@ -42,6 +42,9 @@ function setSchema(schema) {
                 .skip(skipIndex)
                 .exec();
         },
+        findCount: function(search) {
+            return this.count({...search, status: {$ne: 0}}).exec();
+        }
     };
 }
 
