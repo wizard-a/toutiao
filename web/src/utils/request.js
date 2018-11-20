@@ -79,12 +79,13 @@ function request(url, options) {
 function proxyRequest(url, options, showError = true) {
   options = options || {};
   return request(url, options).then((response) => {
+
     if (response.code === 0) {
       return response.data || {};
     }
     if (showError) {
       notification.error({
-        message: response.data.message || 'system error',
+        message: response.message || 'system error',
       });
     }
     const e = new Error();

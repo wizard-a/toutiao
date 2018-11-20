@@ -1,60 +1,58 @@
 import React from 'react';
-import { Button, Input, Row, Col, Table } from 'antd';
 import { BTable } from 'bcomponents';
+import { Row, Col, Input, Form } from 'antd';
+import { ListTable } from './_components';
+import formValid from 'utils/FormValid';
+import layoutConfig from 'config/layoutConfig';
 
-const Search = Input.Search;
+const Search = BTable.Search;
+const Create = BTable.Create;
+const FormItem = Form.Item;
 
+const formItemLayout = layoutConfig.form.default;
+@BTable.tableEffectHoc({
+  url: '/api/v1/channel',
+  requestMethod: 'get',
+  BTable: ListTable,
+})
 class Channel extends React.Component {
 
-  state = {
-    search: ''
-  }
-
   render() {
-    const columns = [{
-      title: 'id',
-      dataIndex: '_id',
-      key: '_id',
-    }, {
-      title: '渠道',
-      dataIndex: 'name',
-      key: 'name',
-    }, {
-      title: '创建时间',
-      dataIndex: 'createTime',
-      key: 'createTime',
-    }];
-
-    const { search } = this.state;
+    const {getData} = this.props;
     return (
-      <div>
-        <Row justify='space-between'>
+      <React.Fragment>
+        <Row justify='space-between' style={{ marginBottom: '20px' }}>
           <Col span={12}>
-            <Search
-              style={{width: 300}}
-              placeholder="请输入关键字"
-              enterButton
-              onSearch={value => this.setState({search: value})}
-            />
+            <Search getData={getData} />
           </Col>
-          <Col style={{textAlign: 'right'}} span={12}>
-            <Button
-              type='primary'
-              onClick={this.create}
-            >新建</Button>
+          <Col span={12} style={{textAlign: 'right'}}>
+            <Create
+              url='/api/v1/channel'
+              getData={getData}
+            >
+              {
+                ({getFieldDecorator}) => (
+                  <React.Fragment>
+                    <FormItem {...formItemLayout} label="渠道">
+                      {getFieldDecorator('name', {
+                        initialValue: '',
+                        validateFirst: true,
+                        rules: [
+                          formValid.require(),
+                          formValid.name(),
+                          formValid.asyncName('/api/v1/channel/check?name=', null, '渠道已存在'),
+                        ],
+                      })(
+                        <Input placeholder="请输入渠道" />
+                      )}
+                    </FormItem>
+                  </React.Fragment>
+                )
+              }
+            </Create>
           </Col>
         </Row>
-        <BTable
-          columns={columns}
-          url='/api/v1/channel'
-          search={search}
-          rowSelection={{
-            onChange: (selectedRowKeys, selectedRows) => {
-              console.log('selectedRowKeys, selectedRows', selectedRowKeys, selectedRows);
-            }
-          }}
-        />
-      </div>
+      </React.Fragment>
     );
   }
 }

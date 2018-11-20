@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-class User extends React.Component {
-
+export class index extends Component {
   render() {
     return (
       <div>
         User List
       </div>
-    );
+    )
   }
 }
 
-export default User;
+export default index

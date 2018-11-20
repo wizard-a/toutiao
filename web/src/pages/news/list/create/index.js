@@ -7,7 +7,7 @@ import router from 'umi/router';
 import layoutConfig from 'config/layoutConfig';
 import styles from './index.less';
 
-const formItemLayout = layoutConfig.modal.big;
+const formItemLayout = layoutConfig.form.large;
 const FormItem = Form.Item;
 
 

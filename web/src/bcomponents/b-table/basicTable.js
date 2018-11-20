@@ -1,26 +1,37 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Table } from 'antd';
-import request from './requestHoc';
 
-@request()
-class BasicTable extends Component {
+class BasicTable extends PureComponent {
+
+  /**
+   * 处理column排序
+   */
+  handleColumn = () => {
+    const { columns, sorter } = this.props;
+    const newColumns = [];
+    for (const column of columns) {
+      if (column.sorter) {
+        newColumns.push({
+          ...column,
+          sortOrder: sorter.filed === column.dataIndex ? `${sorter.order}end` : false,
+        });
+        continue;
+      }
+      newColumns.push(column);
+    };
+    return newColumns;
+  }
 
   render() {
-    const {data, total} = this.state;
-    const {url, ...otherProps} = this.props;
+    const {
+      columns,
+      sorter,
+      ...otherProps} = this.props;
+    const newColumns = this.handleColumn();
     return (
       <div>
         <Table
-          rowKey='_id'
-          dataSource={data}
-          pagination={{
-            current: this.page.pageIndex,
-            pageSize: this.page.pageNum,
-            total: total,
-            showSizeChanger: true,
-            onChange: this.onPageChange,
-            onShowSizeChange: this.onShowSizeChange
-          }}
+          columns={newColumns}
           {...otherProps}
         />
       </div>
