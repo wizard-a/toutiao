@@ -12,7 +12,7 @@ const FormItem = Form.Item;
 const formItemLayout = layoutConfig.form.default;
 @BTable.tableEffectHoc({
   url: '/api/v1/channel',
-  requestMethod: 'get',
+  reqMethod: 'get',
   BTable: ListTable,
 })
 class Channel extends React.Component {

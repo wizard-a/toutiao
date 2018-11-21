@@ -15,7 +15,7 @@ function handlerParamsError(params) {
   }
 }
 
-export default ({url, requestMethod = 'get', BTable, ...tableProps}) => (WrappedComponent) =>  class TableLoader extends Component {
+export default ({url, reqMethod = 'get', BTable, ...tableProps}) => (WrappedComponent) =>  class TableLoader extends Component {
 
   constructor() {
 
@@ -99,7 +99,7 @@ export default ({url, requestMethod = 'get', BTable, ...tableProps}) => (Wrapped
       loading: true,
     });
     const requestUrl = `${url}?${qsStringify(this.page)}`;
-    request[requestMethod](requestUrl).then(res => {
+    request[reqMethod](requestUrl).then(res => {
       this.setState({
         data: res.rows,
         total: res.count,

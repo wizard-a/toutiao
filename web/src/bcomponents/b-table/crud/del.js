@@ -32,8 +32,4 @@ function del({url, reqMethod = 'delete', getData }) {
   });
 }
 
-del.propTypes = {
-  getData: PropTypes.func.isRequired
-}
-
 export default del;
