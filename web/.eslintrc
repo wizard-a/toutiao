@@ -1,3 +1,6 @@
 {
-  "extends": "eslint-config-umi"
+  "extends": "eslint-config-umi",
+  "rules": {
+    "no-unused-vars": [2]
+  }
 }

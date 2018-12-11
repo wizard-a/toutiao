@@ -1,25 +1,30 @@
 import React from 'react';
-import { Button, Input, Row, Col } from 'antd';
+import { BTable } from 'bcomponents';
+import { Row, Col, Button } from 'antd';
 import router from 'umi/router';
+import { ListTable } from './_components';
 
-const Search = Input.Search;
+const Search = BTable.Search;
 
-class List extends React.Component {
+@BTable.tableEffectHoc({
+  url: '/api/v1/news',
+  BTable: ListTable,
+})
+
+class Index extends React.Component {
 
   create = () => {
     router.push('list/create');
   }
 
   render() {
+    const {getData} = this.props;
     return (
-      <div>
-        <Row justify='space-between'>
+      <React.Fragment>
+        <Row justify='space-between' style={{ marginBottom: '20px' }}>
           <Col span={12}>
             <Search
-              style={{width: 300}}
-              placeholder="请输入关键字"
-              enterButton
-              onSearch={value => console.log(value)}
+              getData={getData}
             />
           </Col>
           <Col style={{textAlign: 'right'}} span={12}>
@@ -29,9 +34,9 @@ class List extends React.Component {
             >新建</Button>
           </Col>
         </Row>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default List;
+export default Index;

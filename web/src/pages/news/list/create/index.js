@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Form, Input, Upload, Icon, Button } from 'antd';
-import { UImageUpload, UBraftEditor } from 'components';
+import { Form, Input, Button } from 'antd';
+import { UImageUpload, UBraftEditor } from 'components'
 import { connect } from 'dva';
 import formValid from 'utils/FormValid';
 import router from 'umi/router';
 import layoutConfig from 'config/layoutConfig';
-import styles from './index.less';
+// import styles from './index.less';
 
 const formItemLayout = layoutConfig.form.large;
 const FormItem = Form.Item;
@@ -57,6 +57,7 @@ class Create extends Component {
             label='标题'
           >
               {getFieldDecorator('title', {
+                validateFirst: true,
                 rules: [
                   formValid.require('请输入标题'),
                   formValid.name('标题不能超过32个字符')
@@ -71,6 +72,7 @@ class Create extends Component {
           >
               {getFieldDecorator('content', {
                 // validateTrigger: 'onBlur',
+                validateFirst: true,
                 rules: [
                   formValid.require('请输入内容'),
                 ],
@@ -92,7 +94,7 @@ class Create extends Component {
                   action='/api/v1/news/upload'
                 />
               )}
-          </FormItem>
+          </FormItem >
           <FormItem
             // className={styles.createBtn}
             {...submitFormLayout}
