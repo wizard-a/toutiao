@@ -50,9 +50,13 @@ async function list(search, pageIndex, pageNum, orderName, orderBy) {
             {content: {$regex: search, $options: '$i'}}, //  $options: '$i' 忽略大小写
         ]
     }
-
-    const fields = 'title createUser createTime';
-    return NewsModel.findByPage(filter, pageIndex, pageNum, orderName, orderBy, fields);
+    const fields = 'title createUser createTime  coverImg commentCount';
+    const count = await NewsModel.findCount(filter);
+    const rows = await NewsModel.findByPage(filter, pageIndex, pageNum, orderName, orderBy, fields);
+    return {
+        rows,
+        count,
+    }
 }
 
 module.exports = {
